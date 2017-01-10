@@ -28,14 +28,14 @@ object Encryption {
       options.head
     }
 
-    def inBoundaries(pos: (Int, Int)) = pos._1 >= grid._1 || pos._2 >= grid._2 || getArrayPos(pos) >= phrase.length
+    def outOfBoundaries(pos: (Int, Int)) = pos._1 >= grid._1 || pos._2 >= grid._2 || getArrayPos(pos) >= phrase.length
 
     def getArrayPos(pos: (Int, Int)) = pos._2 + pos._1*grid._2
 
     def getNewPosition(pos: (Int, Int)) = {
       val newPosition = (pos._1 + 1, pos._2)
 
-      if (inBoundaries(newPosition)) (0, pos._2 + 1)
+      if (outOfBoundaries(newPosition)) (0, pos._2 + 1)
       else newPosition
     }
 
@@ -45,7 +45,7 @@ object Encryption {
     }
 
     def helper(pos: (Int, Int)): String = {
-      if (inBoundaries(pos)) return ""
+      if (outOfBoundaries(pos)) return ""
 
       val newPos = getNewPosition(pos)
       addWhiteSpace(pos) + (phrase charAt getArrayPos(pos)) + helper(newPos)
