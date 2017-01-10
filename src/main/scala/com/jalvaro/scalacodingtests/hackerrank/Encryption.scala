@@ -14,36 +14,43 @@ object Encryption {
     println(res)
   }
 
-  def getGrid(l: Int) = {
-    val min = Math.floor(Math.sqrt(l)).toInt
-    val max = min + 1
-    val combinations = List((min, min), (min, max), (max, max))
-
-    val options = combinations map (x => (x, x._1*x._2)) filter (x => x._2 >= l) sortBy (_._2)
-
-    options.head._1
-  }
-
   def encrypt(phrase: String) = {
 
-    def helper(s: String, grid: (Int, Int), times: (Int, Int)): String = {
-      if (times._1 >= grid._1 && times._2 > s.length - times._1*grid._2 - 1 || times._2 >= grid._2)
-        return ""
+    val grid = getGrid()
 
-      val newTimes = getNewTimes(s.length, grid, times)
-      addWhiteSpace(grid, times) + (s charAt (times._1 * grid._2 + times._2)) + helper(s, grid, newTimes)
+    def getGrid() = {
+      val min = Math.floor(Math.sqrt(phrase.length)).toInt
+      val max = min + 1
+      val combinations = List((min, min), (min, max), (max, max))
+
+      val options = combinations filter (x => x._1 * x._2 >= phrase.length)
+
+      options.head
     }
 
-    helper(phrase, getGrid(phrase.length), (0,0))
-  }
+    def inBoundaries(pos: (Int, Int)) = pos._1 >= grid._1 || pos._2 >= grid._2 || getArrayPos(pos) >= phrase.length
 
-  def getNewTimes(l: Int, grid: (Int, Int), times: (Int, Int)) = {
-    if (times._1 + 1 >= grid._1 || (times._1 + 1)*grid._2 + times._2 >= l) (0, times._2 + 1)
-    else (times._1 + 1, times._2)
-  }
+    def getArrayPos(pos: (Int, Int)) = pos._2 + pos._1*grid._2
 
-  def addWhiteSpace(grid: (Int, Int), times: (Int, Int)) = {
-    if (times._1 == 0 && times._2 != 0) " "
-    else ""
+    def getNewPosition(pos: (Int, Int)) = {
+      val newPosition = (pos._1 + 1, pos._2)
+
+      if (inBoundaries(newPosition)) (0, pos._2 + 1)
+      else newPosition
+    }
+
+    def addWhiteSpace(pos: (Int, Int)) = {
+      if (pos._1 == 0 && pos._2 != 0) " "
+      else ""
+    }
+
+    def helper(pos: (Int, Int)): String = {
+      if (inBoundaries(pos)) return ""
+
+      val newPos = getNewPosition(pos)
+      addWhiteSpace(pos) + (phrase charAt getArrayPos(pos)) + helper(newPos)
+    }
+
+    helper((0,0))
   }
 }
