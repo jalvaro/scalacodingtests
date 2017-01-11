@@ -16,8 +16,6 @@ object Encryption {
 
   def encrypt(phrase: String) = {
 
-    val grid = getGrid()
-
     def getGrid() = {
       val min = Math.floor(Math.sqrt(phrase.length)).toInt
       val max = min + 1
@@ -27,6 +25,8 @@ object Encryption {
 
       options.head
     }
+
+    val grid = getGrid()
 
     def outOfBoundaries(pos: (Int, Int)) = pos._1 >= grid._1 || pos._2 >= grid._2 || getArrayPos(pos) >= phrase.length
 
