@@ -1,4 +1,4 @@
-package com.jalvaro.scalacodingtests.hackerrank
+package com.jalvaro.codingtests.hackerrank
 
 object MaxMin {
 

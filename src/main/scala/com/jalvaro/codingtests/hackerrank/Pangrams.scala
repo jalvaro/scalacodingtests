@@ -1,6 +1,4 @@
-package com.jalvaro.scalacodingtests.hackerrank
-
-
+package com.jalvaro.codingtests.hackerrank
 
 object Pangrams {
   val range = 'a' to 'z'

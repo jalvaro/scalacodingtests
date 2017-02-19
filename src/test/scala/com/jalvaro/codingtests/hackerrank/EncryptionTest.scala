@@ -1,6 +1,6 @@
-package com.jalvaro.scalacodingtests
+package com.jalvaro.codingtests.hackerrank
 
-import com.jalvaro.scalacodingtests.hackerrank.Encryption
+import com.jalvaro.codingtests.hackerrank.Encryption
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner

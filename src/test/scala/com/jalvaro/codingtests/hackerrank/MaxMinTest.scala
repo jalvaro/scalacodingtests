@@ -1,4 +1,4 @@
-package com.jalvaro.scalacodingtests.hackerrank
+package com.jalvaro.codingtests.hackerrank
 
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
@@ -8,7 +8,7 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class MaxMinTest extends FunSuite {
 
-  test("MaxMin 20") {
+  /*test("MaxMin 20") {
     assert(20 == MaxMin.getMaxMin(7, 3, List(10, 100, 300, 200, 1000, 20, 30)))
   }
 
@@ -18,6 +18,6 @@ class MaxMinTest extends FunSuite {
 
   test("MaxMin 2") {
     assert(2 == MaxMin.getMaxMin(6, 3, List(10, 20, 30, 100, 101, 102)))
-  }
+  }*/
 
 }

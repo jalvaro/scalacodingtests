@@ -1,4 +1,4 @@
-package com.jalvaro.scalacodingtests.hackerrank
+package com.jalvaro.codingtests.hackerrank
 
 /**
   * Created by jalvaro on 09/01/17.
