@@ -6,12 +6,6 @@ package com.jalvaro.codingtests.hackerrank
 object SSCase1 {
   import scala.collection.JavaConverters._
 
-  def main(args: Array[String]): Unit = {
-    val iter = io.Source.stdin.getLines
-    val elems = iter.toArray
-
-  }
-
   def OutputMostPopularDestination(count: Int) = {
     val iter = Console.in.lines().iterator()
     val elems = iter.asScala.toStream

@@ -6,16 +6,6 @@ package com.jalvaro.codingtests.hackerrank
 object SSCase2 {
   import scala.collection.JavaConverters._
 
-
-  def main(args: Array[String]): Unit = {
-    val iter = io.Source.stdin.getLines
-    val elems = iter.toArray
-
-    val res = findCommonParent(Map(), "", "")
-
-    println(res)
-  }
-
   def OutputCommonManager(count: Int) = {
     val iter = Console.in.lines().iterator()
     val emp1 = iter.next()
